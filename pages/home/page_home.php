@@ -32,8 +32,6 @@ if($group):
     </ul>
   <? endif ?>
   <? endforeach ?>
-<? else: ?>
-	<p>You must now create the 'frontpage' product group. Please see the readme.</p>
 <? endif ?>
 </div>
 <div id="cycle-pagination"></div>
@@ -47,8 +45,6 @@ if($group):
     'style' => 1,
     'products' => $group->list_products()->limit(4)->apply_filters()
   )) ?>
-<? else: ?>
-	<p>You must now create the 'featured' product group. Please see the readme.</p>
 <? endif ?>
   
 <? $group = Shop_CustomGroup::create()->find_by_code('sale') ?>
@@ -59,8 +55,6 @@ if($group):
     'style' => 1,
     'products' => $group->list_products()->limit(4)->apply_filters()
   )) ?>
-<? else: ?>
-	<p>You must now create the 'sale' product group. Please see the readme.</p>
 <? endif ?>
 </div>
 

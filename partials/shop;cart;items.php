@@ -25,7 +25,8 @@ extract(array_merge(array(
       $title = h($item->product->name);
       $width = $site_settings->product_cart_item->image->width;
       $height = $site_settings->product_cart_item->image->height;
-      $image_url = $item->product->image_url(0, $width, $height, true);
+      $images = $item->om('images');
+	  $image_url = $images->count ? $images[0]->getThumbnailPath(60, 'auto') : null;
       $image_description = count($item->product->images) ? h($item->product->images[0]->description) : $title;
       $options_str = $item->options_str();
       

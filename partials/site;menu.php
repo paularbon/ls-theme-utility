@@ -10,18 +10,10 @@ $pages = array(
   '/store'
 );
 
-$active_theme = Cms_Theme::get_active_theme();
-
 foreach($pages as $i => $page):
-  if($active_theme) {
-    if(!$item = Cms_Page::create()->where('theme_id = ?', array($active_theme->id))->find_by_url($page))
-      continue;
-  }
-  else {
-    if(!$item = Cms_Page::create()->find_by_url($page))
-      continue;
-  }
-
+  if(!$item = Cms_Page::create()->find_by_url($page))
+    continue;
+  
   if(!$item->navigation_visible) // beware of ninjas
     continue;
   

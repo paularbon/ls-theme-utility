@@ -28,11 +28,13 @@
     <tbody>
       <?
       foreach($items as $item):
-        $image_url = $item->product->image_url(0, 60, 'auto', true);
+        $images = $item->om('images');
+		$image_url = $images->count ? $images[0]->getThumbnailPath(60, 'auto') : null;
       ?>
       <tr>
         <td class="first">
-          <p>
+        <img class="left" src="<?= $image_url ?>" />
+          <p class="description col-3 left">
           <a href="<?= $item->product->page_url($site_settings->store->product_path) ?>/"><?= $item->output_product_name() ?></a>
           
           <? if($item->product->product_type->files && $order->is_paid() && $item->product->files->count): ?>
